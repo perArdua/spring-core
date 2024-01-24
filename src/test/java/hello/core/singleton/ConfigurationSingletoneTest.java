@@ -39,7 +39,15 @@ public class ConfigurationSingletoneTest {
         // CGLIB는 AppConfig를 상속받은 임의의 다른 클래스를 만들고, 그 다른 클래스를 스프링 빈으로 등록한다.
         // 그리고 그 다른 클래스를 사용해서 스프링 빈을 조회하면, 항상 같은 인스턴스를 반환한다.
         // 이렇게 해서 싱글톤이 보장되는 것이다.
+    }
 
-
+    @Test
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        // AppConfig도 스프링 빈으로 등록된다.
+        // 그래서 AppConfig도 스프링 빈으로 등록되어 있고, 싱글톤을 보장한다.
+        // 그래서 AppConfig를 조회해서 출력하면 모두 같은 AppConfig가 출력된다.
+        AppConfig bean = ac.getBean(AppConfig.class);
+        System.out.println("bean = " + bean.getClass());
     }
 }
