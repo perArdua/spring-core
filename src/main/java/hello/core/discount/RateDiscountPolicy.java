@@ -2,11 +2,13 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by kok8454@gmail.com on 2024-01-14
  * Github : http://github.com/perArdua
  */
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10; // 10% 할인

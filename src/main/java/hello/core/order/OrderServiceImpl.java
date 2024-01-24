@@ -3,12 +3,14 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by kok8454@gmail.com on 2024-01-14
  * Github : http://github.com/perArdua
  */
+@Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
@@ -21,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
 //     DIP를 지키면서 OCP도 지킬 수 있다.
     private DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
