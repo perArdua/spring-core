@@ -9,6 +9,7 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /**
  * Created by kok8454@gmail.com on 2024-01-14
@@ -33,6 +34,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public MemoryMemberRepository memberRepository() {
         System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
@@ -46,6 +48,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
